@@ -1,19 +1,18 @@
-package front;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import banco.BD;
+import model.Admin;
+import model.IDecimalFormat;
+import model.Usuario;
+import model.UsuarioPadrao;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import back.Admin;
-import back.IDecimalFormat;
-import back.Usuario;
-import back.UsuarioPadrao;
-
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;

@@ -1,4 +1,4 @@
-package front;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -7,9 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import back.Casa;
-import back.IDecimalFormat;
-import back.UsuarioPadrao;
+import model.Casa;
+import model.IDecimalFormat;
+import model.UsuarioPadrao;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;

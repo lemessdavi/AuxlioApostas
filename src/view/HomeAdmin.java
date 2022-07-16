@@ -1,4 +1,4 @@
-package front;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -13,12 +13,12 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-import back.Admin;
-import back.Casa;
-import back.Comparator;
-import back.IDecimalFormat;
-import back.UsuarioPadrao;
 import banco.BD;
+import model.Admin;
+import model.Casa;
+import model.Comparator;
+import model.IDecimalFormat;
+import model.UsuarioPadrao;
 
 import javax.swing.JTextField;
 import javax.swing.JTable;

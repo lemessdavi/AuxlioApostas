@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import back.Admin;
-import back.Bet;
-import back.Casa;
-import back.Comparator;
-import back.Usuario;
-import back.UsuarioPadrao;
+import model.Admin;
+import model.Bet;
+import model.Casa;
+import model.Comparator;
+import model.Usuario;
+import model.UsuarioPadrao;
 
 public class BD {
 	private static List<Usuario> usuarios = new ArrayList<>();

@@ -1,4 +1,4 @@
-package front;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -7,8 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import back.Casa;
-import back.UsuarioPadrao;
+import model.Casa;
+import model.UsuarioPadrao;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;

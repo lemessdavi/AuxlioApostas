@@ -1,4 +1,4 @@
-package front;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -8,12 +8,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import back.Admin;
-import back.Casa;
-import back.IDecimalFormat;
-import back.Usuario;
-import back.UsuarioPadrao;
 import banco.BD;
+import model.Admin;
+import model.Casa;
+import model.IDecimalFormat;
+import model.Usuario;
+import model.UsuarioPadrao;
 
 import javax.swing.JLabel;
 import java.awt.Font;

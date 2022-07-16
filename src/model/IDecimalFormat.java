@@ -1,4 +1,4 @@
-package back;
+package model;
 import java.text.DecimalFormat;
 import java.util.Locale;
 

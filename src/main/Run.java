@@ -3,12 +3,12 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
-import back.Admin;
-import back.Casa;
-import back.Usuario;
-import back.UsuarioPadrao;
 import banco.BD;
-import front.Login;
+import model.Admin;
+import model.Casa;
+import model.Usuario;
+import model.UsuarioPadrao;
+import view.Login;
 
 public class Run {
 	

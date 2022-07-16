@@ -1,4 +1,4 @@
-package front;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.Checkbox;
@@ -8,12 +8,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import back.Bet;
-import back.Casa;
-import back.IDecimalFormat;
-import back.Usuario;
-import back.UsuarioPadrao;
 import banco.BD;
+import model.Bet;
+import model.Casa;
+import model.IDecimalFormat;
+import model.Usuario;
+import model.UsuarioPadrao;
 
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
@@ -87,6 +87,9 @@ public class AdicionarBet extends JFrame implements IDecimalFormat{
 		
 	}
 	
+	private void initComponentes() {
+		
+	}
 	
 	public AdicionarBet(UsuarioPadrao usuario, Home home) {
 		this.usuario = usuario;
