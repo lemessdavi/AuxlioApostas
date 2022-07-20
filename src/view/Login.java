@@ -49,6 +49,7 @@ public class Login extends JFrame implements IDecimalFormat {
 			System.out.println("DENTRO" +usuario.getLogin() + usuario.getSenha());
 			if(login.equals(usuario.getLogin()) && senha.equals(usuario.getSenha())) {
 				usuarioLogado = usuario;
+				System.out.println(usuario.getLogin());
 				return true;
 			}
 		}
@@ -56,6 +57,7 @@ public class Login extends JFrame implements IDecimalFormat {
 	}
 	
 	public Usuario getUsuarioLogado() {
+		System.out.println(usuarioLogado.getLogin());
 		return usuarioLogado;
 	}
 	

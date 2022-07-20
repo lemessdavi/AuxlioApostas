@@ -76,11 +76,8 @@ public class Home extends JFrame implements IDecimalFormat {
 		return textFieldLucro;
 	}
 	
+	private void initComponentes() {
 	
-	public Home(Usuario usuario) {
-		this.usuario = usuario;
-		Home home = this;
-		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -122,22 +119,12 @@ public class Home extends JFrame implements IDecimalFormat {
 		contentPane.add(lblAlterarBanca);
 		
 		btnAddBet = new JButton("Adicionar");
-		btnAddBet.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AdicionarBet addBetTela = new AdicionarBet((UsuarioPadrao)usuario, home);
-				addBetTela.setVisible(true);
-			}
-		});
+		
 		btnAddBet.setBounds(294, 57, 117, 29);
 		contentPane.add(btnAddBet);
 		
 		btnAlterar = new JButton("Alterar");
-		btnAlterar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AlterarBanca telaAlterarBanca = new AlterarBanca((UsuarioPadrao) usuario, home);
-				telaAlterarBanca.setVisible(true);
-			}
-		});
+		
 		btnAlterar.setBounds(293, 139, 117, 29);
 		contentPane.add(btnAlterar);
 		
@@ -147,12 +134,7 @@ public class Home extends JFrame implements IDecimalFormat {
 		contentPane.add(lblAdicionarCasa);
 		
 		btnAdicionarCasa = new JButton("Adicionar");
-		btnAdicionarCasa.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AdicionarCasa telaAddCasa = new AdicionarCasa((UsuarioPadrao) usuario, home);
-				telaAddCasa.setVisible(true);
-			}
-		});
+		
 		btnAdicionarCasa.setBounds(293, 218, 117, 29);
 		contentPane.add(btnAdicionarCasa);
 		
@@ -168,5 +150,21 @@ public class Home extends JFrame implements IDecimalFormat {
 		
 	}
 	
+	public void addActionToBtnAddBet(ActionListener action) {
+		btnAddBet.addActionListener(action);
+	}
+	
+	public void addActionToBtnAddCasa(ActionListener action) {
+		btnAdicionarCasa.addActionListener(action);
+	}
+	public void addActionToBtnAlterar(ActionListener action) {
+		btnAlterar.addActionListener(action);
+	}
+	
+	public Home(Usuario usuario) {
+		this.usuario = usuario;
+		initComponentes();
+		
+	}
 
 }

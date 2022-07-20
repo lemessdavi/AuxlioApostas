@@ -1,15 +1,19 @@
 package controller;
 
 import model.Bet;
+import model.UsuarioPadrao;
 import view.AdicionarBet;
+import view.Home;
 
 public class AdicionarBetController {
-	private Bet modelBet;
+	private UsuarioPadrao modelUsuario;
 	private AdicionarBet viewAddBet;
+	private Home viewHome;
 	
-	public AdicionarBetController(Bet bet, AdicionarBet tela) {
-		this.modelBet = bet;
-		this.viewAddBet = tela;
+	public AdicionarBetController(UsuarioPadrao modelUsuario, Home viewHome ) {
+		this.viewAddBet = new AdicionarBet(modelUsuario, viewHome);
+		this.modelUsuario = modelUsuario;
+		this.viewHome = viewHome;
 	}
 	
 	
