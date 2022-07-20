@@ -12,4 +12,5 @@ public class AdicionarBetController {
 		this.viewAddBet = tela;
 	}
 	
+	
 }

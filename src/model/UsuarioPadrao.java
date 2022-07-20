@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-import banco.BD;
+import dao.DAO;
 
 public class UsuarioPadrao extends Usuario implements Comparable<UsuarioPadrao>{
 	private ArrayList<Casa> casas = new ArrayList<>();
@@ -17,7 +17,7 @@ public class UsuarioPadrao extends Usuario implements Comparable<UsuarioPadrao>{
 		super(login, senha);
 		this.casas = casas;
 		casas.forEach((casa) -> bancaTotal = bancaTotal + casa.getBanca());
-		BD.addUsuarioPadrao(this);
+		DAO.addUsuarioPadrao(this);
 	}
 	
 	//caso seja inserida apenas uma casa
@@ -25,7 +25,7 @@ public class UsuarioPadrao extends Usuario implements Comparable<UsuarioPadrao>{
 		super(login, senha);
 		this.casas.add(casa);
 		bancaTotal = casa.getBanca();
-		BD.addUsuarioPadrao(this);
+		DAO.addUsuarioPadrao(this);
 	}
 	
 	public void setBancaTotal() {

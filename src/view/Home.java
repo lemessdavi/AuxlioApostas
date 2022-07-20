@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import banco.BD;
+import dao.DAO;
 import model.Admin;
 import model.Casa;
 import model.IDecimalFormat;
@@ -55,7 +55,7 @@ public class Home extends JFrame implements IDecimalFormat {
 			model.addRow(rowData);
 		}
 		} else {
-			ArrayList<UsuarioPadrao> listaUsuarios = (ArrayList<UsuarioPadrao>) BD.getUsuariosPadrao();
+			ArrayList<UsuarioPadrao> listaUsuarios = (ArrayList<UsuarioPadrao>) DAO.getUsuariosPadrao();
 			Object rowData[] = new Object[2];
 			for (UsuarioPadrao usuario : listaUsuarios) {
 				

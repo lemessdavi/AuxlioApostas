@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import banco.BD;
+import dao.DAO;
 import model.Bet;
 import model.Casa;
 import model.IDecimalFormat;

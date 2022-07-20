@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Casa {
+	private int id;
 	private String nome;
 	private double banca;
 	private double bancaPadrao;
@@ -52,6 +53,11 @@ public class Casa {
 			lucro += bet.getLucro();
 		}
 		banca += lucro;
+	}
+	
+	public void addBet(Bet bet) {
+		//metodo para adicionar no BD
+		bets.add(bet);
 	}
 	
 	@Override

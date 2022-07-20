@@ -13,7 +13,7 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-import banco.BD;
+import dao.DAO;
 import model.Admin;
 import model.Casa;
 import model.Comparator;
@@ -36,7 +36,7 @@ public class HomeAdmin extends JFrame implements IDecimalFormat {
 	public void addRowToJTabel() {
 		DefaultTableModel model =  (DefaultTableModel) tableUsuariosPadroes.getModel();
 		model.setRowCount(0);
-			ArrayList<UsuarioPadrao> listaUsuarios = (ArrayList<UsuarioPadrao>) BD.getUsuariosPadrao();
+			ArrayList<UsuarioPadrao> listaUsuarios = (ArrayList<UsuarioPadrao>) DAO.getUsuariosPadrao();
 			Object rowData[] = new Object[3];
 			for (UsuarioPadrao usuario : listaUsuarios) {
 				
@@ -73,7 +73,7 @@ public class HomeAdmin extends JFrame implements IDecimalFormat {
 	        ));
 		tableUsuariosPadroes.setBounds(16, 48, 414, 197);
 		contentPane.add(tableUsuariosPadroes);
-		Collections.sort(BD.getUsuariosPadrao());
+		Collections.sort(DAO.getUsuariosPadrao());
 		addRowToJTabel();
 		
 		
@@ -82,12 +82,12 @@ public class HomeAdmin extends JFrame implements IDecimalFormat {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(comboBoxOrdem.getSelectedItem());
 				if(comboBoxOrdem.getSelectedItem().equals("Alfabética")) {
-					Collections.sort(BD.getUsuariosPadrao());
+					Collections.sort(DAO.getUsuariosPadrao());
 					addRowToJTabel();
 				}
 				else {
 					 Comparator comparator = new Comparator((String)comboBoxOrdem.getSelectedItem());
-					 Collections.sort(BD.getUsuariosPadrao(), comparator);
+					 Collections.sort(DAO.getUsuariosPadrao(), comparator);
 					 addRowToJTabel();
 					 
 					 /*

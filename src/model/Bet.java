@@ -1,7 +1,7 @@
 package model;
 
 public class Bet {
-
+	private int id;
 	private double odd;
 	private double stake;
 	private double lucro;
@@ -14,10 +14,14 @@ public class Bet {
 		this.green = green;
 		this.lucro = lucro;
 		this.casa = casa;
-		casa.getBets().add(this);
+		casa.addBet(this);
 		
 		
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	};
 	
 	public double getLucro() {
 		return lucro;

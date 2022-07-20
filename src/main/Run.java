@@ -3,7 +3,8 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
-import banco.BD;
+import controller.LoginController;
+import dao.DAO;
 import model.Admin;
 import model.Casa;
 import model.Usuario;
@@ -40,8 +41,7 @@ public class Run {
 		
 		Usuario admin = new Admin("admin", "admin");
 		
-		Login telaLogin = new Login();
-		telaLogin.setVisible(true);
+		LoginController loginController = new LoginController();
 		
 	}
 }
