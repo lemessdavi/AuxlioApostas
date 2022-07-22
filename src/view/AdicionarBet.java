@@ -44,7 +44,10 @@ public class AdicionarBet extends JFrame implements IDecimalFormat{
 	private JLabel lblNewLabel_1_1_2;
 	private JLabel lblNewLabel_1_1_1_1;
 	private Usuario usuario;
-	double lucro;
+	private double lucro;
+	private JLabel lblNewLabel_1_1 = new JLabel("Stake");
+	private JLabel lblNewLabel_1_1_1 = new JLabel("Odd @");
+	JButton btnCadastrarBet = new JButton("Cadastrar Bet");
 
 	private double calculaLucro(boolean green, double stake, double odd) {
 		if (green)
@@ -88,11 +91,6 @@ public class AdicionarBet extends JFrame implements IDecimalFormat{
 	}
 	
 	private void initComponentes() {
-		
-	}
-	
-	public AdicionarBet(UsuarioPadrao usuario, Home home) {
-		this.usuario = usuario;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -106,7 +104,7 @@ public class AdicionarBet extends JFrame implements IDecimalFormat{
 		lblNewLabel.setBounds(31, 17, 61, 16);
 		contentPane.add(lblNewLabel);
 		
-		comboBoxCasa = new JComboBox(usuario.getCasas().toArray());
+		comboBoxCasa = new JComboBox(((UsuarioPadrao) usuario).getCasas().toArray());
 		comboBoxCasa.setBounds(68, 13, 128, 27);
 	
 		contentPane.add(comboBoxCasa);
@@ -122,21 +120,14 @@ public class AdicionarBet extends JFrame implements IDecimalFormat{
 		txtFieldLucro.setColumns(10);
 		
 		txtFieldStake = new JTextField();
-		txtFieldStake.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				atualizaLucro();
-			}
-		});
 		txtFieldStake.setColumns(10);
 		txtFieldStake.setBounds(84, 65, 112, 26);
 		contentPane.add(txtFieldStake);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Stake");
 		lblNewLabel_1_1.setBounds(31, 70, 41, 16);
 		contentPane.add(lblNewLabel_1_1);
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel("Odd @");
+		
 		lblNewLabel_1_1_1.setBounds(31, 108, 41, 16);
 		contentPane.add(lblNewLabel_1_1_1);
 		
@@ -160,15 +151,14 @@ public class AdicionarBet extends JFrame implements IDecimalFormat{
 		chckbxGreen.setBounds(31, 146, 79, 23);
 		contentPane.add(chckbxGreen);
 		
-		
-		
+
 		
 		//win win
 		lblNewLabel_2 = new JLabel("Casa");
 		lblNewLabel_2.setBounds(262, 17, 61, 16);
 		contentPane.add(lblNewLabel_2);
 		
-		comboBoxCasaWinWin = new JComboBox(usuario.getCasas().toArray());
+		comboBoxCasaWinWin = new JComboBox(((UsuarioPadrao) usuario).getCasas().toArray());
 		comboBoxCasaWinWin.setBounds(299, 13, 128, 27);
 		contentPane.add(comboBoxCasaWinWin);
 		
@@ -228,18 +218,35 @@ public class AdicionarBet extends JFrame implements IDecimalFormat{
 		chckbxWinWin.setBounds(31, 181, 102, 23);
 		contentPane.add(chckbxWinWin);
 		
-		JButton btnCadastrarBet = new JButton("Cadastrar Bet");
-		btnCadastrarBet.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				 Bet bet = new Bet(Double.parseDouble(txtFieldOdd.getText()), Double.parseDouble(txtFieldStake.getText()),chckbxGreen.isSelected(),lucro,(Casa) comboBoxCasa.getSelectedItem());
-				 ((Casa) comboBoxCasa.getSelectedItem()).refreshLucro();
-				 usuario.refreshLucroTotal();
-				 home.getTextFieldLucro().setText(setDecimal(((UsuarioPadrao) usuario).getLucroTotal()));
-				 home.addRowToJTabel();
-				
-			}
-		});
+
 		btnCadastrarBet.setBounds(31, 215, 117, 29);
 		contentPane.add(btnCadastrarBet);
+		
+	}
+	public void addKeyListenerTxtFieldStake(KeyAdapter action){
+		txtFieldStake.addKeyListener(action);
+	}
+	public void addActionToBtnCadastrarBet(ActionListener action) {
+		btnCadastrarBet.addActionListener(action);
+	}
+	public Casa getSelectedCasa() {
+		return (Casa) comboBoxCasa.getSelectedItem();
+	}
+	public double getOdd() {
+		return Double.parseDouble(txtFieldOdd.getText());
+	}
+	public double getStake(){
+		return Double.parseDouble(txtFieldStake.getText());
+	}
+	public boolean getGreen() {
+		return chckbxGreen.isSelected();
+	}
+	public double getLucro() {
+		return lucro;
+	}
+	
+	public AdicionarBet(UsuarioPadrao usuario, Home home) {
+		this.usuario = usuario;
+		initComponentes();	
 	}
 }

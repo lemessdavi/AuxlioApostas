@@ -32,6 +32,8 @@ public class HomeAdmin extends JFrame implements IDecimalFormat {
 	private JPanel contentPane;
 	private JTextField textFieldNomeAdmin;
 	private JTable tableUsuariosPadroes;
+	private JComboBox comboBoxOrdem = new JComboBox();
+	private Admin admin;
 
 	public void addRowToJTabel() {
 		DefaultTableModel model =  (DefaultTableModel) tableUsuariosPadroes.getModel();
@@ -48,7 +50,7 @@ public class HomeAdmin extends JFrame implements IDecimalFormat {
 		}
 	}
 	
-	public HomeAdmin(Admin admin) {
+	private void initComponentes() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -76,37 +78,25 @@ public class HomeAdmin extends JFrame implements IDecimalFormat {
 		Collections.sort(DAO.getUsuariosPadrao());
 		addRowToJTabel();
 		
-		
-		JComboBox comboBoxOrdem = new JComboBox();
-		comboBoxOrdem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println(comboBoxOrdem.getSelectedItem());
-				if(comboBoxOrdem.getSelectedItem().equals("Alfabética")) {
-					Collections.sort(DAO.getUsuariosPadrao());
-					addRowToJTabel();
-				}
-				else {
-					 Comparator comparator = new Comparator((String)comboBoxOrdem.getSelectedItem());
-					 Collections.sort(DAO.getUsuariosPadrao(), comparator);
-					 addRowToJTabel();
-					 
-					 /*
-					 for (UsuarioPadrao usuario : BD.getUsuariosPadrao()) {
-						int cont = 0;
-						while(cont < BD.getUsuariosPadrao().size()) {
-							comparator.compare(usuario, BD.getUsuariosPadrao().get(cont));
-						}
-						
-					}
-					 */
-					
-				}
-			}
-		});
-		
+
 		comboBoxOrdem.setModel(new DefaultComboBoxModel(new String[] {"Alfabética", "Banca Decrescente", "Banca Crescente"}));
 		comboBoxOrdem.setBounds(289, 7, 141, 27);
 		contentPane.add(comboBoxOrdem);
+	}
+	
+	public void addActionToCbOrdem(ActionListener action) {
+		comboBoxOrdem.addActionListener(action);
+	}
+	
+	public String getSelectedOrdem() {
+		return (String) comboBoxOrdem.getSelectedItem();
+	}
+	
+	public HomeAdmin(Admin admin) {
+		this.admin = admin;
+		initComponentes();
+		
+		
 
 	}
 }

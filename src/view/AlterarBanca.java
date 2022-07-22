@@ -31,8 +31,11 @@ public class AlterarBanca extends JFrame implements IDecimalFormat {
 	Casa casa;
 	JComboBox comboBoxCasas;
 	JComboBox comboBoxOperacao;
+	JLabel lblNewLabel_1 = new JLabel("Banca Atual:");
+	JLabel lblNewLabel = new JLabel("Quantia:");
+	JButton btnAlterarBanca = new JButton("Alterar");
+	UsuarioPadrao usuario;
 	
-
 	public void atualizaCasa() {
 		casa = (Casa) comboBoxCasas.getSelectedItem();
 	}
@@ -51,9 +54,7 @@ public class AlterarBanca extends JFrame implements IDecimalFormat {
 		}catch(NullPointerException | NumberFormatException ex) {}
 	}
 	
-	
-	public AlterarBanca(UsuarioPadrao usuario, Home home) {
-		casa = usuario.getCasas().get(0);
+	private void initComponents() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 411, 248);
 		contentPane = new JPanel();
@@ -123,30 +124,41 @@ public class AlterarBanca extends JFrame implements IDecimalFormat {
 		
 		
 		
-		JLabel lblNewLabel = new JLabel("Quantia:");
+		
 		lblNewLabel.setBounds(33, 98, 61, 16);
 		contentPane.add(lblNewLabel);
 		
 		
 		
-		JLabel lblNewLabel_1 = new JLabel("Banca Atual:");
+		
 		lblNewLabel_1.setBounds(270, 31, 92, 16);
 		contentPane.add(lblNewLabel_1);
-		
-		JButton btnAlterarBanca = new JButton("Alterar");
-		btnAlterarBanca.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(comboBoxOperacao.getSelectedItem().equals("Saque")) {
-					casa.saque(Double.parseDouble(txtFieldQuantia.getText()));
-				}else {
-					casa.deposito(Double.parseDouble(txtFieldQuantia.getText()));
-				}
-				home.addRowToJTabel();
-				dispose();
-			}
-			
-		});
 		btnAlterarBanca.setBounds(270, 157, 117, 29);
 		contentPane.add(btnAlterarBanca);
+		
+	}
+	
+	public void addActionBtnAlterarBanca(ActionListener action) {
+		btnAlterarBanca.addActionListener(action);
+	}
+	
+	public Casa getCasa() {
+		return casa;
+	}
+	
+	public String getSelectedOperation() {
+		return (String) comboBoxOperacao.getSelectedItem();
+	}
+
+	public double getQuantia() {
+		return Double.parseDouble(txtFieldQuantia.getText());
+	}
+	
+	public AlterarBanca(UsuarioPadrao usuario, Home home) {
+		this.usuario = usuario;
+		casa = usuario.getCasas().get(0);
+		initComponents();
+		
+		
 	}
 }

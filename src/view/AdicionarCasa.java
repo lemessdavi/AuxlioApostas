@@ -21,11 +21,11 @@ public class AdicionarCasa extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtField_Casa;
 	private JTextField txtField_Banca;
-
-	/**
-	 * Create the frame.
-	 */
-	public AdicionarCasa(UsuarioPadrao usuario, Home home) {
+	JLabel lblNewLabel = new JLabel("Nome da Casa:");
+	JLabel lblNewLabel_1 = new JLabel("Banca:");
+	JButton btnAdcionarCasa = new JButton("Adiconar Casa");
+	
+	private void initComponentes() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 331, 224);
 		contentPane = new JPanel();
@@ -33,7 +33,7 @@ public class AdicionarCasa extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Nome da Casa:");
+	
 		lblNewLabel.setBounds(20, 19, 117, 16);
 		contentPane.add(lblNewLabel);
 		
@@ -42,7 +42,7 @@ public class AdicionarCasa extends JFrame {
 		contentPane.add(txtField_Casa);
 		txtField_Casa.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("Banca:");
+		
 		lblNewLabel_1.setBounds(20, 111, 61, 16);
 		contentPane.add(lblNewLabel_1);
 		
@@ -51,15 +51,26 @@ public class AdicionarCasa extends JFrame {
 		txtField_Banca.setBounds(20, 128, 130, 26);
 		contentPane.add(txtField_Banca);
 		
-		JButton btnAdcionarCasa = new JButton("Adiconar Casa");
-		btnAdcionarCasa.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				usuario.addCasa(new Casa(txtField_Casa.getText(), Double.parseDouble(txtField_Banca.getText()))); 
-				home.addRowToJTabel();
-				dispose();
-			}
-		});
 		btnAdcionarCasa.setBounds(199, 85, 117, 29);
 		contentPane.add(btnAdcionarCasa);
+		
+	}
+	
+	public void addActionBtnAddCasa(ActionListener action) {
+		btnAdcionarCasa.addActionListener(action);
+	}
+	
+	public String getNomeCasa() {
+		return txtField_Casa.getText();
+	}
+	
+	public double getBanca() {
+		return Double.parseDouble(txtField_Banca.getText());
+	}
+	
+	public AdicionarCasa(UsuarioPadrao usuario, Home home) {
+		
+		initComponentes();
+		
 	}
 }

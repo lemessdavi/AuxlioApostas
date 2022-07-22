@@ -8,7 +8,7 @@ import view.CadastroUsuario;
 import view.Home;
 import view.HomeAdmin;
 import view.Login;
-import view.TelaErro;
+import view.TelaCom;
 
 public class LoginController {
 	Login viewLogin;
@@ -42,7 +42,7 @@ public class LoginController {
 			}
 		}else {
 
-			TelaErro telaErro = new TelaErro("Dados Incorretos");
+			TelaCom telaErro = new TelaCom("Dados Incorretos");
 			telaErro.setVisible(true);
 		}
 		

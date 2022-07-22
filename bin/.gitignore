@@ -1,9 +1,6 @@
-/.DS_Store
-/back/
-/banco/
-/front/
+/controller/
+/dao/
 /main/
 /model/
 /view/
-/controller/
-/dao/
+/tableModel/

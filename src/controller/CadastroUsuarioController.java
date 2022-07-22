@@ -9,7 +9,7 @@ import model.Usuario;
 import model.UsuarioPadrao;
 import view.CadastroUsuario;
 import view.Login;
-import view.TelaErro;
+import view.TelaCom;
 
 public class CadastroUsuarioController {
 	CadastroUsuario viewCadastroUsuario;
@@ -40,8 +40,7 @@ public class CadastroUsuarioController {
 	public void actionBtnCadastrar() {
 		String nome = viewCadastroUsuario.getNome();
 		String senha = viewCadastroUsuario.getSenha();
-		Double banca = viewCadastroUsuario.getBanca();
-		String nomeCasa = viewCadastroUsuario.getNomeCasa();
+		
 		
 		Usuario usuario;
 		if (viewCadastroUsuario.isAdm()) {
@@ -49,12 +48,14 @@ public class CadastroUsuarioController {
 			viewCadastroUsuario.dispose();
 		} else {
 			try {
+				Double banca = viewCadastroUsuario.getBanca();
+				String nomeCasa = viewCadastroUsuario.getNomeCasa();
 				Casa casa = new Casa(nomeCasa,banca);
 				usuario = new UsuarioPadrao(nome,senha, casa );
 				viewLogin.addRowToJTabel();
 				viewCadastroUsuario.dispose();
 			} catch (NumberFormatException ex) {
-				TelaErro telaErro = new TelaErro("Insira Apenas Números");
+				TelaCom telaErro = new TelaCom("Insira Apenas Números");
 				telaErro.setVisible(true);
 			}
 			

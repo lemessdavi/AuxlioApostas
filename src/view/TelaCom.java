@@ -9,17 +9,18 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.UIManager;
+import javax.swing.SwingConstants;
 
-public class TelaErro extends JFrame {
+public class TelaCom extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-
+	private String texto;
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaErro(String texto) {
+	private void initComponentes() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 322, 170);
 		contentPane = new JPanel();
@@ -29,10 +30,15 @@ public class TelaErro extends JFrame {
 		contentPane.setLayout(null);
 		
 		textField = new JTextField(texto);
+		textField.setHorizontalAlignment(SwingConstants.CENTER);
 		textField.setBackground(UIManager.getColor("Button.background"));
 		textField.setEditable(false);
-		textField.setBounds(86, 48, 130, 26);
+		textField.setBounds(33, 25, 243, 68);
 		contentPane.add(textField);
 		textField.setColumns(10);
+	}
+	public TelaCom(String texto) {
+		this.texto = texto;
+		initComponentes();
 	}
 }
