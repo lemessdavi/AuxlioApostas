@@ -1,6 +1,2 @@
-/controller/
-/dao/
-/main/
-/model/
 /view/
-/tableModel/
+/dao/
